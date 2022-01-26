@@ -1,4 +1,5 @@
 require("dotenv").config(); // dotenv help maintain it security
+
 const subscribersRouter = require('./routes/subscribers');
 
 const express = require("express");
@@ -20,7 +21,7 @@ connection()
 
 app.use(express.json())
 
-app.use('/subscribers', subscribersRouter);
+app.use('/subscribers', subscribersRouter); //localhost:3000/subscribers
 
 app.listen(3000, () => console.log('Server Started'));
 
