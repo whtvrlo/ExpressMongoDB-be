@@ -19,9 +19,9 @@ const getSubscriber = async (req, res, next) => { // function saying if we call 
 
 }
 
+//==================================================================================================================================================================
 
-
-// getting all
+// GET ALL
 router.get("/", async (req, res) => {
     try {
         const subscribers = await Subscriber.find()
@@ -33,12 +33,12 @@ router.get("/", async (req, res) => {
 
 })
 
-// getting one
+// GET ONE
 router.get("/:id", getSubscriber, (req, res) => {
     res.json(res.subscriber)
 })
 
-// creating one
+// CREATE ONE
 router.post("/", async (req, res) => {
     const subscriber = new Subscriber({
         name: req.body.name,
@@ -55,7 +55,7 @@ router.post("/", async (req, res) => {
     }
  });
 
-// updating single one
+// UPDATE ONE
 router.patch("/:id", getSubscriber, async (req, res) => {
     if (req.body.name != null) {
         res.subscriber.name = req.body.name
@@ -73,7 +73,7 @@ router.patch("/:id", getSubscriber, async (req, res) => {
     
 })
 
-// deleting single one
+// DELETE ONE
 router.delete("/:id", getSubscriber, async (req, res) => {
     try {
         await res.subscriber.remove()
@@ -85,7 +85,6 @@ router.delete("/:id", getSubscriber, async (req, res) => {
     }
     
 })
-
 
 
 module.exports = router
